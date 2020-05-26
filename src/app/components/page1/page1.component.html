@@ -1,0 +1,259 @@
+<div class="my-navbar-container fixed-top">
+  <div class="my-navbar">
+    <div class="my-nav-icon">
+      <img src="../../../assets/images/relay.png" />
+    </div>
+    <div class="my-nav-title row">
+      <div class="title-1">
+        EAT. - 6 LONDON RIVERSIDE,
+      </div>
+      &nbsp;
+      <div class="title-2">
+        SE1 2DA
+      </div>
+    </div>
+    <div class="my-nav-links">
+      <i class="fa fa-bell"></i>
+      &nbsp;
+      <i class="fa fa-comments-o"></i>
+    </div>
+  </div>
+</div>
+
+<div class="container-main">
+  <div class="container-top">
+    <div class="header">
+      <img src="../../../assets/images/coffee-cup.png" />
+      &nbsp;&nbsp;
+      <div class="title">RELAY CONTAINERS</div>
+    </div>
+    <div class="body">
+      <div
+        class="item"
+        *ngFor="let i of topItems"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Click To SELL SOME ITEMS"
+      >
+        <img src="{{ i.cupImage }}" alt="" />
+        <div class="chart-top">
+          <canvas
+            baseChart
+            class="shadowed"
+            (click)="tempClick1(topItems.indexOf(i))"
+            [data]="[i.totalAmount - i.remainAmount, i.remainAmount]"
+            [labels]="['sold', 'remain']"
+            [options]="i.chart.options"
+            [colors]="i.chart.colors"
+            [chartType]="'doughnut'"
+          >
+          </canvas>
+        </div>
+        <div class="cup-name">
+          {{ i.cupModel }}
+        </div>
+        <div class="remain-amount">
+          {{ i.remainAmount }}
+        </div>
+        <div class="full-amount">of {{ i.totalAmount }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-bottom">
+    <div class="container-left">
+      <div class="header">
+        <img src="../../../assets/images/delivery.png" />
+        &nbsp;&nbsp;
+        <div class="title">
+          DELIVERIES
+        </div>
+      </div>
+      <div class="body">
+        <div class="body-row">
+          <div class="header">
+            <div class="title">
+              INCOMING
+            </div>
+            <a>See all</a>
+          </div>
+          <div class="my-card-container">
+            <div class="my-card bg-light">
+              <div class="timeline">
+                <div class="date">
+                  12/01/2020
+                </div>
+                <div class="time">
+                  12.15 PM
+                </div>
+              </div>
+              <div class="stock">
+                STOCK
+              </div>
+              <div class="items">
+                Large Cofee Cups - 200 <br />
+                Small Soup Pots - 120
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-row">
+          <div class="header">
+            <div class="title">
+              PAST
+            </div>
+            <a>See all</a>
+          </div>
+          <div class="my-card-container">
+            <div class="my-card bg-light">
+              <div class="timeline">
+                <div class="date">
+                  12/01/2020
+                </div>
+                <div class="time">
+                  12.15 PM
+                </div>
+              </div>
+              <div class="stock">
+                STOCK
+              </div>
+              <div class="items">
+                Large Cofee Cups - 200 <br />
+                Small Soup Pots - 120
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-right">
+      <div class="header">
+        <img src="../../../assets/images/bin.png" />
+        &nbsp;&nbsp;
+        <div class="title">
+          RELAY BINS
+        </div>
+      </div>
+      <div class="body">
+        <div class="body-row">
+          <div
+            class="item"
+            *ngFor="let i of bottomItems1"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Click To PUT ITEMS INTO BIN"
+          >
+            <div class="item-left">
+              <div class="percentage">
+                {{i.percentage}}% <div class="filled">filled</div>
+              </div>
+              <div class="chart-bottom">
+                <canvas
+                  (click)="tempClick2(bottomItems1.indexOf(i))"
+                  baseChart
+                  class="shadowed"
+                  [data]="[i.LCC, i.MCC, i.SP, i.SB, i.PB, i.space]"
+                  [labels]="[
+                    'Large cofee cups',
+                    'Medium cofee cups',
+                    'Soup Pots',
+                    'Salad Boxes',
+                    'Pasta Boxes',
+                    'space'
+                  ]"
+                  [options]="i.chart.options"
+                  [colors]="i.chart.colors"
+                  [chartType]="'doughnut'"
+                >
+                </canvas>
+              </div>
+              <div class="bottom-title">
+                {{ i.location }}
+              </div>
+            </div>
+            <div class="item-right">
+              <div *ngIf="i.LCC > 0">
+                <i class="fa fa-circle" style="color: #5863c5;"></i> Large cofee
+                cups<br />
+              </div>
+              <div *ngIf="i.MCC > 0">
+                <i class="fa fa-circle" style="color: purple;"></i> Medium cofee
+                cups<br />
+              </div>
+              <div *ngIf="i.SP > 0">
+                <i class="fa fa-circle" style="color: #00DCD2;"></i> Soup Pots<br />
+              </div>
+              <div *ngIf="i.SB > 0">
+                <i class="fa fa-circle" style="color: green;"></i> Salad
+                Boxes<br />
+              </div>
+              <div *ngIf="i.PB > 0">
+                <i class="fa fa-circle" style="color: orange;"></i> Pasta Boxes
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-row">
+          <div
+            class="item"
+            *ngFor="let i of bottomItems2"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Click To PUT ITEMS INTO BIN"
+          >
+            <div class="item-left">
+              <div class="percentage">
+                {{i.percentage}}% <div class="filled">filled</div>
+              </div>
+              <div class="chart-bottom">
+                <canvas
+                  (click)="tempClick2(bottomItems2.indexOf(i)+3)"
+                  baseChart
+                  class="shadowed"
+                  [data]="[i.LCC, i.MCC, i.SP, i.SB, i.PB, i.space]"
+                  [labels]="[
+                    'Large cofee cups',
+                    'Medium cofee cups',
+                    'Soup Pots',
+                    'Salad Boxes',
+                    'Pasta Boxes',
+                    'space'
+                  ]"
+                  [options]="i.chart.options"
+                  [colors]="i.chart.colors"
+                  [chartType]="'doughnut'"
+                >
+                </canvas>
+              </div>
+              <div class="bottom-title">
+                {{ i.location }}
+              </div>
+            </div>
+            <div class="item-right">
+              <div *ngIf="i.LCC > 0">
+                <i class="fa fa-circle" style="color: blue;"></i> Large cofee
+                cups<br />
+              </div>
+              <div *ngIf="i.MCC > 0">
+                <i class="fa fa-circle" style="color: purple;"></i> Medium cofee
+                cups <br />
+              </div>
+              <div *ngIf="i.SP > 0">
+                <i class="fa fa-circle" style="color: #00DCD2;"></i> Soup Pots
+                <br />
+              </div>
+              <div *ngIf="i.SB > 0">
+                <i class="fa fa-circle" style="color: green;"></i> Salad
+                Boxes<br />
+              </div>
+              <div *ngIf="i.PB > 0">
+                <i class="fa fa-circle" style="color: orange;"></i> Pasta Boxes
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
