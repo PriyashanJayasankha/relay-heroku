@@ -335,13 +335,19 @@ $my-dark-blue: darken(
 }
 
 @media (max-width: 1300px) {
-  .filled{
-    color: white;
+  // .filled{
+  //   color: white;
+  // }
+  .percentage{
+    top: 100px !important;
   }
 }
 
 @media (max-width: 1279px) {
   .item-right{
     display: none;
+  }
+  .percentage{
+    top: 110px !important;
   }
 }
